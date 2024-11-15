@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "dev-app",
+    "newArchEnabled": true,
     "slug": "dev-app",
     "version": "1.0.0",
     "scheme": "dev-app",

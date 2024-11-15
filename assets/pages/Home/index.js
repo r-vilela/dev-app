@@ -1,12 +1,16 @@
-import React from "react";
-import { View } from "react-native"
+import React, { useState } from "react";
+import { TextInput, View } from "react-native"
 import styles from "./style";
 
-export default function Home() {
+export default function InitialPage() {
+    const [usuario, setUsuario] = useState('')
+
+
+
     return (
         <View style={styles.container}>
-            <View>
-            </View>
+            <Text>Inicio</Text>
+            <TextInput/>
         </View>
     )
 }
