@@ -3,10 +3,10 @@ import { router } from "expo-router";
 import { Text, View, Image, TouchableOpacity } from "react-native"
 import styles from "./style";
 
-export default function LoginPage() {
+export default function InitialPage() {
 
     const logar = () => {
-        router.replace('Home')
+        router.replace('Login')
     }
 
     return (

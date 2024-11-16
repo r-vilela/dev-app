@@ -5,6 +5,7 @@ const useAuthStore = create((set) => ({
     usuario: '',
     senha: '',
     token: '',
+    mensagemError: undefined, 
 
     login: async (usuario, senha) => {
         try {
@@ -20,9 +21,44 @@ const useAuthStore = create((set) => ({
                 credentials: 'include' // Include cookies (e.g., accessToken) in the request
             })
             const loginData = await loginResponse.json()
-            console.log(loginData)
+
+            if(loginData.message){
+                set({mensagemError: `Ocorreu um erro: ${loginData.message}`})
+            }
+            
+            if(loginData.accessToken){console.log(loginData.accessToken)}
+
+            if(loginData.accessToken){
+                const logarUsuario = await fetch('https://dummyjson.com/auth/me', {
+                    method: 'GET',
+                    headers: {
+                    'Authorization': 'Bearer' + loginData.accessToken,
+                    }, 
+                    credentials: 'include' // Include cookies (e.g., accessToken) in the request
+                })
+
+                const logarUsuarioData = await logarUsuario.json()
+
+                set({
+                    usuarioLogado: true,
+                    usuario: usuario,
+                    senha: senha,
+                    token: loginData.accessToken,
+                    UserActivation: logarUsuarioData.avatar
+                })
+            }                
+
         } catch (error) {
 
         }
-    }
+    },
+
+    logout: () => set({
+        usuarioLogado: false, 
+        usuario: '', 
+        senha: '', 
+        token: ''
+    })
 }))
+
+export default useAuthStore

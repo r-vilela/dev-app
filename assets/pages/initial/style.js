@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     LogInButton: {
         height: 100,
         width: 200,
-        backgroundColor: '#54c762', 
+        backgroundColor: '#22c55e', 
         padding: 20,
         borderRadius: 5,
         marginTop: 20,

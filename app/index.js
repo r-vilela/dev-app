@@ -1,5 +1,5 @@
-import LoginPage from "../assets/pages/Login";
+import InitialPage from "../assets/pages/initial";
 
-export default function Login() {
-    return <LoginPage />
+export default function Initial() {
+    return <InitialPage />
 }
